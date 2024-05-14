@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  CodeBuildProject:
+    Type: 'AWS::CodeBuild::Project'
+    Properties:
+      Name: 'mediawiki-build-project'
+      Description: 'Build project for MediaWiki application'
+      ServiceRole: 'your-codebuild-service-role-arn' # Replace with your CodeBuild service role ARN
+      Artifacts:
+        Type: 'NO_ARTIFACTS' # indicating that this build project doesn't produce any output artifacts
+      Environment:
+        Type: 'LINUX_CONTAINER'
+        ComputeType: 'BUILD_GENERAL1_SMALL'
+        Image: 'aws/codebuild/standard:5.0'
+      Source:
+        Type: 'CODEPIPELINE' #indicating that the source code will be provided by a CodePipeline
