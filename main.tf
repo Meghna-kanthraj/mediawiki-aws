@@ -1,13 +1,4 @@
-# Define provider
-provider "aws" {
-  region = "your_aws_region"
-}
-
-# Define Kubernetes provider
-provider "kubernetes" {
-  config_context_cluster = "your_eks_cluster_name"
-}
-
+#
 # Create EKS cluster (use the appropriate module for Red Hat Linux nodes)
 module "eks_cluster" {
   source            = "terraform-aws-modules/eks/aws"
